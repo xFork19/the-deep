@@ -1,0 +1,259 @@
+[gd_scene load_steps=25 format=3 uid="uid://c7xhptjvom7dt"]
+
+[ext_resource type="Script" uid="uid://b1jtj5j7vbn5o" path="res://character_body_2d.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://bnmaq8g217agt" path="res://ahh.png" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://b677y7g04qs74" path="res://bk.png" id="3_0hol4"]
+[ext_resource type="Texture2D" uid="uid://do4ktg3stf6nt" path="res://rl_bttm.png" id="3_epypp"]
+[ext_resource type="Texture2D" uid="uid://dktb2r5fu66lr" path="res://d1.png" id="3_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://cyuyska0cp2gp" path="res://d2.png" id="4_hqns4"]
+[ext_resource type="Texture2D" uid="uid://b4t357mriptdx" path="res://scare1.png" id="4_kdubu"]
+[ext_resource type="Texture2D" uid="uid://dslby24bs20jo" path="res://scare2.png" id="5_d21ai"]
+[ext_resource type="Texture2D" uid="uid://c2qhuxas760uw" path="res://d3.png" id="5_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://caes2cdshlmln" path="res://d4.png" id="6_0h7mo"]
+[ext_resource type="Texture2D" uid="uid://t47utf33dcxt" path="res://bookKRAKEN.png" id="10_0h7mo"]
+[ext_resource type="AudioStream" uid="uid://coee27c5phptv" path="res://music.mp3" id="10_hqns4"]
+[ext_resource type="AudioStream" uid="uid://crn742milnunp" path="res://horror.mp3" id="11_x0ka3"]
+
+[sub_resource type="Gradient" id="Gradient_0e48y"]
+offsets = PackedFloat32Array(0.44666666, 1)
+colors = PackedColorArray(2.5870278e-07, 0, 0.22171614, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_epypp"]
+gradient = SubResource("Gradient_0e48y")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_0hol4"]
+offsets = PackedFloat32Array(0.22, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q6r6c"]
+gradient = SubResource("Gradient_0hol4")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdubu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wtcfe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wtcfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ir8iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hqns4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x0ka3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0h7mo")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(120.980774, 73.60773)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rj586"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kdubu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d21ai")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_epypp"]
+colors = PackedColorArray(1, 1, 0.6392157, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0hol4"]
+gradient = SubResource("Gradient_epypp")
+fill = 1
+fill_from = Vector2(0.47663552, 0.50934577)
+fill_to = Vector2(0.10280374, 0.8551402)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(17283.914, 112.72461)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(301.50024, 14600.625)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Water" type="TextureRect" parent="."]
+offset_left = -8702.0
+offset_top = -6460.0
+offset_right = 9843.0
+offset_bottom = 10123.0
+texture = SubResource("GradientTexture2D_epypp")
+
+[node name="Shadow" type="TextureRect" parent="."]
+visible = false
+light_mask = 2
+offset_left = -8553.0
+offset_top = -6442.0
+offset_right = 10088.0
+offset_bottom = 10334.0
+texture = SubResource("GradientTexture2D_q6r6c")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(53, 53)
+script = ExtResource("1_0e48y")
+
+[node name="Ahh" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(525, 268.38278)
+scale = Vector2(0.15000002, 0.1912759)
+sprite_frames = SubResource("SpriteFrames_kdubu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(524, 268)
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D/CollisionShape2D"]
+position = Vector2(5, 1)
+scale = Vector2(0.99999994, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D"]
+
+[node name="dontmove" type="AnimatedSprite2D" parent="CharacterBody2D/CanvasLayer"]
+visible = false
+position = Vector2(525.50006, 316)
+scale = Vector2(0.6203125, 0.6111111)
+sprite_frames = SubResource("SpriteFrames_rj586")
+autoplay = "default"
+frame_progress = 0.40295136
+
+[node name="Bk" type="Sprite2D" parent="CharacterBody2D/CanvasLayer"]
+position = Vector2(68.49998, 112.16528)
+scale = Vector2(0.14125006, 0.12611571)
+texture = ExtResource("3_0hol4")
+
+[node name="Ydepth" type="Label" parent="CharacterBody2D/CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.371887
+offset_top = -276.3719
+offset_right = 168.37189
+offset_bottom = -253.37189
+grow_vertical = 2
+
+[node name="X" type="Label" parent="CharacterBody2D/CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.239624
+offset_top = -306.9504
+offset_right = 57.239624
+offset_bottom = -283.9504
+grow_vertical = 2
+
+[node name="book" type="Label" parent="CharacterBody2D/CanvasLayer"]
+offset_left = 22.113739
+offset_top = 167.02983
+offset_right = 62.11374
+offset_bottom = 190.02983
+text = "E: book"
+
+[node name="restart" type="Label" parent="CharacterBody2D/CanvasLayer"]
+offset_left = 24.845795
+offset_top = 203.91255
+offset_right = 81.845795
+offset_bottom = 226.91255
+text = "R: Restart"
+
+[node name="turn" type="Label" parent="CharacterBody2D/CanvasLayer"]
+offset_left = 26.211823
+offset_top = 238.74623
+offset_right = 83.21182
+offset_bottom = 261.74622
+text = "Turn right/left: a or d"
+
+[node name="move" type="Label" parent="CharacterBody2D/CanvasLayer"]
+offset_left = 26.894836
+offset_top = 273.5799
+offset_right = 83.89484
+offset_bottom = 296.5799
+text = "move: a or d"
+
+[node name="timesinceattack" type="Label" parent="CharacterBody2D/CanvasLayer"]
+offset_left = 27.363659
+offset_top = 322.45453
+offset_right = 123.36366
+offset_bottom = 345.45453
+
+[node name="BookKraken" type="Sprite2D" parent="CharacterBody2D/CanvasLayer"]
+visible = false
+position = Vector2(566.50006, 360)
+scale = Vector2(0.19921875, 0.21296299)
+texture = ExtResource("10_0h7mo")
+
+[node name="light" type="PointLight2D" parent="CharacterBody2D"]
+position = Vector2(532, 271)
+scale = Vector2(16.5, 10.176758)
+texture = SubResource("GradientTexture2D_0hol4")
+
+[node name="music" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+position = Vector2(526, 269)
+scale = Vector2(16.5, 10.176758)
+stream = ExtResource("10_hqns4")
+autoplay = true
+
+[node name="attack" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("11_x0ka3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RlBttm" type="Sprite2D" parent="."]
+position = Vector2(579.00006, 4983.0005)
+scale = Vector2(4.8343754, 4.6803246)
+texture = ExtResource("3_epypp")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-8462, -6288)
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-8040.676, 9364.977)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8475.719, 579.38574)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-7515.074, -5029.8516)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(7866.074, -245.14844)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-8040.676, 9364.977)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(230.67578, -7333.8516)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(-8040.676, 9364.977)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(16971.426, -7826.289)
+shape = SubResource("RectangleShape2D_0hol4")

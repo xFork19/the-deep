@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://ditedcs1j1u77"]
+
+[ext_resource type="Script" uid="uid://begsdrk8m3mo0" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cgokm5qtxu8k" path="res://BG.png" id="2_0xm2m"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(573.5, 325)
+scale = Vector2(0.6015625, 0.6037037)
+texture = ExtResource("2_0xm2m")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 39.0
+offset_top = 92.0
+offset_right = 199.0
+offset_bottom = 145.0
+text = "Play Game"
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 166.0
+offset_right = 200.0
+offset_bottom = 219.0
+text = "Settings"
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 41.0
+offset_top = 239.0
+offset_right = 201.0
+offset_bottom = 292.0
+text = "Credits"
+
+[node name="Controls" type="Button" parent="."]
+offset_left = 41.0
+offset_top = 314.0
+offset_right = 201.0
+offset_bottom = 367.0
+text = "Controls"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
